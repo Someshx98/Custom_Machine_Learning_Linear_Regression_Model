@@ -17,11 +17,11 @@ if file is not None:
     
     numeric_columns = f.select_dtypes(include = ['float64', 'int64']).columns
     
-    X = st.selectbox("Select the X-Set", f.columns)
-    Y = st.selectbox("Select the Y-Set", f.columns)
+    X = st.selectbox("Select the X-Set", numeric_columns)
+    Y = st.selectbox("Select the Y-Set", numeric_columns)
     
     iterations = st.slider("No of Iterations: ", min_value = 100, max_value = 5000, value = 1000)
-    learning_rate = st.slider("Select Your learning rate: ", min_value = 0.0001, max_value = 0.1, value = 0.01, step = 0.0001)
+    learning_rate = st.slider("Select Your learning rate: ", min_value = 0.00001, max_value = 0.1, value = 0.00001, step = 0.00001, format = "%f")
     
     x_data = f[X].astype(float).values
     y_data = f[Y].astype(float).values
